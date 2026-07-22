@@ -1,5 +1,11 @@
+import DashboardLayout from "../components/layout/DashboardLayout";
+
 function Settings() {
-  return <h1>Settings Page</h1>;
+  return (
+    <DashboardLayout>
+      <h1 className="text-3xl font-bold">Settings</h1>
+    </DashboardLayout>
+  );
 }
 
 export default Settings;

@@ -1,5 +1,11 @@
+import DashboardLayout from "../components/layout/DashboardLayout";
+
 function Alerts() {
-  return <h1>Alerts Page</h1>;
+  return (
+    <DashboardLayout>
+      <h1 className="text-3xl font-bold">Alerts</h1>
+    </DashboardLayout>
+  );
 }
 
 export default Alerts;
