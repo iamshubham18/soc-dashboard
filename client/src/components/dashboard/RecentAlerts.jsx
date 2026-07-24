@@ -1,3 +1,4 @@
+import Badge from "../common/Badge";
 const alerts = [
   {
     id: 1,
@@ -54,7 +55,9 @@ function RecentAlerts() {
             >
               <td className="py-4">{alert.title}</td>
 
-              <td>{alert.severity}</td>
+              <td>
+                <Badge severity={alert.severity} />
+            </td>
 
               <td>{alert.source}</td>
 

@@ -2,6 +2,7 @@ import DashboardLayout from "../components/layout/DashboardLayout";
 import StatCard from "../components/dashboard/StatCard";
 import ThreatChart from "../components/dashboard/ThreatChart";
 import RecentAlerts from "../components/dashboard/RecentAlerts";
+import RecentIncidents from "../components/dashboard/RecentIncidents";
 
 import {
   ShieldAlert,
@@ -14,13 +15,13 @@ function Dashboard() {
   return (
     <DashboardLayout>
       <div className="space-y-8">
-
+        {/* Page Title */}
         <h1 className="text-3xl font-bold">
           SOC Dashboard
         </h1>
 
+        {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
-
           <StatCard
             title="Total Alerts"
             value="1,248"
@@ -48,15 +49,27 @@ function Dashboard() {
             icon={<Server className="text-white" />}
             color="bg-green-500"
           />
-          <div className="grid grid-cols-1 gap-6">
+        </div>
+
+        {/* Threat Chart + Recent Alerts */}
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2">
             <ThreatChart />
           </div>
 
-           {/* Recent Alerts */}
           <RecentAlerts />
-          
         </div>
 
+        {/* Recent Incidents + System Health */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <RecentIncidents />
+
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center justify-center">
+            <h2 className="text-xl font-semibold text-slate-500">
+              System Health (Coming Soon)
+            </h2>
+          </div>
+        </div>
       </div>
     </DashboardLayout>
   );
