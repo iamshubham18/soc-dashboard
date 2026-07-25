@@ -3,6 +3,7 @@ import StatCard from "../components/dashboard/StatCard";
 import ThreatChart from "../components/dashboard/ThreatChart";
 import RecentAlerts from "../components/dashboard/RecentAlerts";
 import RecentIncidents from "../components/dashboard/RecentIncidents";
+import SystemHealth from "../components/dashboard/SystemHealth";
 
 import {
   ShieldAlert,
@@ -64,11 +65,7 @@ function Dashboard() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           <RecentIncidents />
 
-          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6 flex items-center justify-center">
-            <h2 className="text-xl font-semibold text-slate-500">
-              System Health (Coming Soon)
-            </h2>
-          </div>
+           <SystemHealth />
         </div>
       </div>
     </DashboardLayout>
