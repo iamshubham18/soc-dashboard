@@ -1,4 +1,7 @@
-import Badge from "../common/Badge";
+import Card from "../ui/Card";
+import SectionHeader from "../ui/SectionHeader";
+import { ShieldAlert } from "lucide-react";
+
 const alerts = [
   {
     id: 1,
@@ -23,50 +26,74 @@ const alerts = [
   },
   {
     id: 4,
-    title: "Multiple Failed Logins",
+    title: "Multiple Failed Login Attempts",
     severity: "Low",
     source: "Active Directory",
     time: "1 hour ago",
   },
 ];
 
+function getSeverityColor(severity) {
+  switch (severity) {
+    case "Critical":
+      return "bg-red-100 text-red-700";
+    case "High":
+      return "bg-orange-100 text-orange-700";
+    case "Medium":
+      return "bg-yellow-100 text-yellow-700";
+    default:
+      return "bg-green-100 text-green-700";
+  }
+}
+
 function RecentAlerts() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h2 className="text-xl font-semibold mb-5">
-        Recent Alerts
-      </h2>
+    <Card className="p-6">
+      <SectionHeader
+        title="Recent Alerts"
+        subtitle="Latest security events"
+        action={<ShieldAlert className="text-blue-600" size={22} />}
+      />
 
-      <table className="w-full">
-        <thead>
-          <tr className="border-b text-left">
-            <th className="pb-3">Alert</th>
-            <th className="pb-3">Severity</th>
-            <th className="pb-3">Source</th>
-            <th className="pb-3">Time</th>
-          </tr>
-        </thead>
+      <div className="space-y-4">
+        {alerts.map((alert) => (
+          <div
+            key={alert.id}
+            className="rounded-xl border border-slate-200 p-4 transition-all duration-300 hover:border-blue-300 hover:shadow-md hover:-translate-y-1"
+          >
+            <div className="flex items-start justify-between">
+              <div>
+                <h3 className="font-semibold text-slate-800">
+                  {alert.title}
+                </h3>
 
-        <tbody>
-          {alerts.map((alert) => (
-            <tr
-              key={alert.id}
-              className="border-b hover:bg-slate-50"
-            >
-              <td className="py-4">{alert.title}</td>
+                <p className="mt-1 text-sm text-slate-500">
+                  {alert.source}
+                </p>
+              </div>
 
-              <td>
-                <Badge severity={alert.severity} />
-            </td>
+              <span
+                className={`rounded-full px-3 py-1 text-xs font-semibold ${getSeverityColor(
+                  alert.severity
+                )}`}
+              >
+                {alert.severity}
+              </span>
+            </div>
 
-              <td>{alert.source}</td>
+            <div className="mt-4 flex items-center justify-between">
+              <span className="text-xs text-slate-400">
+                {alert.time}
+              </span>
 
-              <td>{alert.time}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+              <button className="text-sm font-medium text-blue-600 hover:text-blue-700">
+                View →
+              </button>
+            </div>
+          </div>
+        ))}
+      </div>
+    </Card>
   );
 }
 

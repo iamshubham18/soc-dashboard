@@ -1,4 +1,5 @@
 import Card from "../ui/Card";
+import SectionHeader from "../ui/SectionHeader";
 import {
   XAxis,
   YAxis,
@@ -22,17 +23,10 @@ const data = [
 function ThreatChart() {
   return (
     <Card className="p-6">
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h2 className="text-xl font-bold text-slate-900">
-            Weekly Threat Trend
-          </h2>
-
-          <p className="text-sm text-slate-500">
-            Detected threats over the last 7 days
-          </p>
-        </div>
-      </div>
+      <SectionHeader
+  title="Weekly Threat Trend"
+  subtitle="Detected threats over the last 7 days"
+ />
 
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
