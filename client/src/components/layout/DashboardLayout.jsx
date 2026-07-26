@@ -9,7 +9,7 @@ function DashboardLayout({ children }) {
       <div className="flex-1 flex flex-col">
         <Navbar />
 
-        <main className="flex-1 p-6 bg-slate-100">
+        <main className="flex-1 p-8 bg-slate-50 min-h-screen overflow-y-auto">
           {children}
         </main>
       </div>

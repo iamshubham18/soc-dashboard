@@ -1,51 +1,80 @@
+import Card from "../ui/Card";
 import {
-  ResponsiveContainer,
-  LineChart,
-  Line,
-  CartesianGrid,
   XAxis,
   YAxis,
+  CartesianGrid,
   Tooltip,
+  ResponsiveContainer,
+  Area,
+  AreaChart,
 } from "recharts";
 
 const data = [
-  { day: "Mon", alerts: 120 },
-  { day: "Tue", alerts: 98 },
-  { day: "Wed", alerts: 150 },
-  { day: "Thu", alerts: 180 },
-  { day: "Fri", alerts: 160 },
-  { day: "Sat", alerts: 110 },
-  { day: "Sun", alerts: 90 },
+  { day: "Mon", threats: 18 },
+  { day: "Tue", threats: 32 },
+  { day: "Wed", threats: 21 },
+  { day: "Thu", threats: 45 },
+  { day: "Fri", threats: 38 },
+  { day: "Sat", threats: 55 },
+  { day: "Sun", threats: 42 },
 ];
 
 function ThreatChart() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-5">
-      <h2 className="text-lg font-semibold mb-5">
-        Weekly Threat Trend
-      </h2>
+    <Card className="p-6">
+      <div className="flex items-center justify-between mb-6">
+        <div>
+          <h2 className="text-xl font-bold text-slate-900">
+            Weekly Threat Trend
+          </h2>
+
+          <p className="text-sm text-slate-500">
+            Detected threats over the last 7 days
+          </p>
+        </div>
+      </div>
 
       <div className="h-80">
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={data}>
-            <CartesianGrid strokeDasharray="3 3" />
+          <AreaChart data={data}>
+            <defs>
+              <linearGradient id="threatGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#2563EB" stopOpacity={0.4} />
+                <stop offset="95%" stopColor="#2563EB" stopOpacity={0.02} />
+              </linearGradient>
+            </defs>
 
-            <XAxis dataKey="day" />
+            <CartesianGrid
+              strokeDasharray="4 4"
+              stroke="#E2E8F0"
+            />
 
-            <YAxis />
+            <XAxis
+              dataKey="day"
+              tick={{ fill: "#64748B" }}
+              axisLine={false}
+              tickLine={false}
+            />
+
+            <YAxis
+              tick={{ fill: "#64748B" }}
+              axisLine={false}
+              tickLine={false}
+            />
 
             <Tooltip />
 
-            <Line
+            <Area
               type="monotone"
-              dataKey="alerts"
-              stroke="#2563eb"
+              dataKey="threats"
+              stroke="#2563EB"
               strokeWidth={3}
+              fill="url(#threatGradient)"
             />
-          </LineChart>
+          </AreaChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </Card>
   );
 }
 

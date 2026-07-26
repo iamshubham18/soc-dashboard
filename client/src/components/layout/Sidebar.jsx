@@ -47,20 +47,37 @@ function Sidebar() {
   };
 
   return (
-    <aside className="w-64 bg-slate-900 text-white flex flex-col h-screen">
-      <div className="p-6 border-b border-slate-700">
-        <h1 className="text-2xl font-bold">🛡 SOC Dashboard</h1>
+    <aside className="w-72 bg-slate-950 border-r border-slate-800 text-white flex flex-col h-screen shadow-2xl">
+
+      {/* Logo */}
+      <div className="px-6 py-5 border-b border-slate-800">
+        <div className="flex items-center gap-3">
+          <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg">
+            <span className="text-2xl">🛡</span>
+          </div>
+
+          <div>
+            <h1 className="text-xl font-bold tracking-wide">
+              SecureOps
+            </h1>
+
+            <p className="text-xs text-slate-400">
+              Security Operations Center
+            </p>
+          </div>
+        </div>
       </div>
 
-      <nav className="flex-1 px-3 py-6 space-y-2">
+      {/* Navigation */}
+      <nav className="flex-1 px-4 py-6 space-y-2">
         {menuItems.map((item) => (
           <NavLink
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-lg transition-all duration-200 ${
+              `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
                 isActive
-                  ? "bg-blue-600 text-white"
+                  ? "bg-blue-600 text-white shadow-lg"
                   : "text-slate-300 hover:bg-slate-800 hover:text-white"
               }`
             }
@@ -71,15 +88,30 @@ function Sidebar() {
         ))}
       </nav>
 
-      <div className="p-4 border-t border-slate-700">
+      {/* User Info */}
+      <div className="px-4 py-4 border-t border-slate-800">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">
+            S
+          </div>
+
+          <div>
+            <p className="font-semibold">Shubham</p>
+            <p className="text-xs text-slate-400">
+              Security Analyst
+            </p>
+          </div>
+        </div>
+
         <button
           onClick={handleLogout}
-          className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-red-400 hover:bg-red-600 hover:text-white transition-all duration-200"
+          className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-red-500 hover:bg-red-600 transition-all duration-300"
         >
-          <LogOut size={20} />
+          <LogOut size={18} />
           Logout
         </button>
       </div>
+
     </aside>
   );
 }

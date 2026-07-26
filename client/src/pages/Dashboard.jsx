@@ -5,6 +5,7 @@ import RecentAlerts from "../components/dashboard/RecentAlerts";
 import RecentIncidents from "../components/dashboard/RecentIncidents";
 import SystemHealth from "../components/dashboard/SystemHealth";
 import TopAttackSources from "../components/dashboard/TopAttackSources";
+import Button from "../components/ui/Button";
 
 import {
   ShieldAlert,
@@ -21,6 +22,22 @@ function Dashboard() {
         <h1 className="text-3xl font-bold">
           SOC Dashboard
         </h1>
+        <div className="flex gap-4">
+  <Button>Export Report</Button>
+
+  <Button variant="secondary">
+    Refresh
+  </Button>
+
+  <Button variant="danger">
+    Delete
+  </Button>
+
+  <Button variant="success">
+    Resolve
+  </Button>
+</div>
+        
 
         {/* Statistics Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
