@@ -4,6 +4,7 @@ import ThreatChart from "../components/dashboard/ThreatChart";
 import RecentAlerts from "../components/dashboard/RecentAlerts";
 import RecentIncidents from "../components/dashboard/RecentIncidents";
 import SystemHealth from "../components/dashboard/SystemHealth";
+import TopAttackSources from "../components/dashboard/TopAttackSources";
 
 import {
   ShieldAlert,
@@ -65,7 +66,55 @@ function Dashboard() {
         <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
           <RecentIncidents />
 
-           <SystemHealth />
+          <SystemHealth />
+        </div>
+
+        {/* Top Attack Sources + Live Activity Feed */}
+        <div className="grid grid-cols-1 xl:grid-cols-2 gap-6">
+          <TopAttackSources />
+
+          <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
+            <h2 className="text-xl font-semibold mb-5">
+              Live Activity Feed
+            </h2>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                <p className="text-sm">
+                  User <strong>admin</strong> logged in.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-red-500"></span>
+                <p className="text-sm">
+                  Malware detected on <strong>PC-102</strong>.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
+                <p className="text-sm">
+                  Firewall policy updated.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                <p className="text-sm">
+                  New endpoint connected.
+                </p>
+              </div>
+
+              <div className="flex items-center gap-3">
+                <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                <p className="text-sm">
+                  Incident <strong>#204</strong> resolved.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </DashboardLayout>
