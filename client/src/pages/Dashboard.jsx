@@ -5,6 +5,7 @@ import RecentAlerts from "../components/dashboard/RecentAlerts";
 import RecentIncidents from "../components/dashboard/RecentIncidents";
 import SystemHealth from "../components/dashboard/SystemHealth";
 import TopAttackSources from "../components/dashboard/TopAttackSources";
+import DashboardHeader from "../components/dashboard/DashboardHeader";
 
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
@@ -23,16 +24,7 @@ function Dashboard() {
       <div className="space-y-8">
 
         {/* Dashboard Header */}
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-bold text-slate-900">
-              SOC Dashboard
-            </h1>
-
-            <p className="mt-2 text-slate-500">
-              Monitor alerts, incidents, and system health in real time.
-            </p>
-          </div>
+       <DashboardHeader />
 
           <Button className="flex items-center gap-2">
             <Download size={18} />
@@ -180,7 +172,7 @@ function Dashboard() {
 
         </div>
 
-      </div>
+      
     </DashboardLayout>
   );
 }
