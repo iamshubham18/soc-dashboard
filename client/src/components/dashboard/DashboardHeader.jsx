@@ -1,4 +1,10 @@
-import { Download, Bell, UserCircle } from "lucide-react";
+import {
+  Download,
+  Bell,
+  UserCircle,
+  Activity,
+} from "lucide-react";
+
 import Button from "../ui/Button";
 
 function DashboardHeader() {
@@ -17,64 +23,161 @@ function DashboardHeader() {
   });
 
   return (
-    <div className="flex flex-col gap-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+    <div
+      className="
+        rounded-3xl
+        border
+        border-slate-200
+        dark:border-slate-800
 
-      {/* Top Row */}
-      <div className="flex items-center justify-between">
+        bg-white
+        dark:bg-slate-900
 
+        shadow-sm
+
+        p-8
+
+        transition-all
+        duration-300
+      "
+    >
+      {/* Top */}
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+
+        {/* Left */}
         <div>
-          <h1 className="text-4xl font-bold text-slate-900">
-            SOC Dashboard
-          </h1>
+          <div className="flex items-center gap-3">
 
-          <p className="mt-2 text-slate-500">
-            Monitor alerts, incidents, and system health in real time.
-          </p>
-        </div>
+            <h1 className="text-4xl font-bold text-slate-900 dark:text-white">
+              SOC Dashboard
+            </h1>
 
-        <div className="flex items-center gap-4">
+            <div
+              className="
+                flex items-center
+                gap-2
 
-          <button className="rounded-xl border border-slate-200 p-3 transition hover:bg-slate-100">
-            <Bell size={20} />
-          </button>
+                rounded-full
 
-          <div className="flex items-center gap-2 rounded-xl border border-slate-200 px-4 py-2">
+                bg-green-100
+                dark:bg-green-900/30
 
-            <UserCircle
-              size={34}
-              className="text-blue-600"
-            />
+                px-3
+                py-1
+              "
+            >
+              <Activity
+                size={14}
+                className="text-green-600"
+              />
 
-            <div>
-              <p className="font-semibold">
-                Admin
-              </p>
-
-              <p className="text-xs text-slate-500">
-                Security Analyst
-              </p>
+              <span className="text-xs font-semibold text-green-700 dark:text-green-400">
+                LIVE
+              </span>
             </div>
 
           </div>
 
+          <p className="mt-3 text-slate-500 dark:text-slate-400">
+            Monitor alerts, incidents and infrastructure health in real time.
+          </p>
         </div>
 
+        {/* Right */}
+        <div className="flex items-center gap-4">
+
+          <button
+            className="
+              relative
+
+              flex
+              h-12
+              w-12
+              items-center
+              justify-center
+
+              rounded-xl
+
+              border
+              border-slate-200
+              dark:border-slate-700
+
+              hover:bg-slate-100
+              dark:hover:bg-slate-800
+
+              transition
+            "
+          >
+            <Bell className="text-slate-700 dark:text-white" />
+
+            <span
+              className="
+                absolute
+                top-2
+                right-2
+
+                h-2.5
+                w-2.5
+
+                rounded-full
+
+                bg-red-500
+
+                ring-2
+                ring-white
+                dark:ring-slate-900
+              "
+            />
+          </button>
+
+          <div
+            className="
+              flex
+              items-center
+              gap-3
+
+              rounded-2xl
+
+              border
+              border-slate-200
+              dark:border-slate-700
+
+              px-4
+              py-3
+            "
+          >
+            <UserCircle
+              size={38}
+              className="text-blue-600"
+            />
+
+            <div>
+              <p className="font-semibold text-slate-900 dark:text-white">
+                Admin
+              </p>
+
+              <p className="text-xs text-slate-500 dark:text-slate-400">
+                Security Analyst
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      {/* Bottom Row */}
+      {/* Divider */}
+      <div className="my-8 border-t border-slate-200 dark:border-slate-800"></div>
 
-      <div className="flex items-center justify-between">
+      {/* Bottom */}
+      <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
 
         <div>
-
-          <p className="font-medium text-slate-700">
+          <p className="font-semibold text-slate-900 dark:text-white">
             {date}
           </p>
 
-          <p className="text-sm text-slate-500">
-            {time}
+          <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            Current Time • {time}
           </p>
-
         </div>
 
         <Button className="flex items-center gap-2">
@@ -83,7 +186,6 @@ function DashboardHeader() {
         </Button>
 
       </div>
-
     </div>
   );
 }

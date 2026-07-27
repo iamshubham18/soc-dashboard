@@ -9,7 +9,17 @@ function DashboardLayout({ children }) {
       <div className="flex-1 flex flex-col">
         <Navbar />
 
-        <main className="flex-1 p-8 bg-slate-50 min-h-screen overflow-y-auto">
+        <main
+          className="
+            flex-1
+            p-8
+            overflow-auto
+            bg-slate-100
+            dark:bg-slate-900
+            transition-colors
+            duration-300
+          "
+        >
           {children}
         </main>
       </div>

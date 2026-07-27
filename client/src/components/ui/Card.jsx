@@ -8,15 +8,13 @@ function Card({ children, className = "" }) {
         bg-white
         dark:bg-slate-800
 
-        rounded-2xl
-
         border
         border-slate-200
         dark:border-slate-700
 
+        rounded-2xl
         shadow-sm
-
-        hover:shadow-lg
+        hover:shadow-xl
 
         transition-all
         duration-300

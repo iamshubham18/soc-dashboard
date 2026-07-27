@@ -6,6 +6,7 @@ import {
   Settings,
   LogOut,
 } from "lucide-react";
+
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/useAuth";
 
@@ -47,21 +48,41 @@ function Sidebar() {
   };
 
   return (
-    <aside className="w-72 bg-slate-950 border-r border-slate-800 text-white flex flex-col h-screen shadow-2xl">
+    <aside
+      className="
+        w-72
+        h-screen
+        flex
+        flex-col
 
+        bg-white
+        dark:bg-slate-950
+
+        border-r
+        border-slate-200
+        dark:border-slate-800
+
+        text-slate-900
+        dark:text-white
+
+        shadow-xl
+        transition-colors
+        duration-300
+      "
+    >
       {/* Logo */}
-      <div className="px-6 py-5 border-b border-slate-800">
+      <div className="px-6 py-5 border-b border-slate-200 dark:border-slate-800">
         <div className="flex items-center gap-3">
           <div className="h-12 w-12 rounded-xl bg-blue-600 flex items-center justify-center shadow-lg">
-            <span className="text-2xl">🛡</span>
+            <span className="text-2xl text-white">🛡</span>
           </div>
 
           <div>
-            <h1 className="text-xl font-bold tracking-wide">
+            <h1 className="text-xl font-bold tracking-wide text-slate-900 dark:text-white">
               SecureOps
             </h1>
 
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Security Operations Center
             </p>
           </div>
@@ -75,11 +96,20 @@ function Sidebar() {
             key={item.path}
             to={item.path}
             className={({ isActive }) =>
-              `flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-all duration-300 ${
-                isActive
-                  ? "bg-blue-600 text-white shadow-lg"
-                  : "text-slate-300 hover:bg-slate-800 hover:text-white"
-              }`
+              `
+                flex items-center gap-3
+                px-4 py-3
+                rounded-xl
+                font-medium
+                transition-all
+                duration-300
+
+                ${
+                  isActive
+                    ? "bg-blue-600 text-white shadow-lg"
+                    : "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
+                }
+              `
             }
           >
             {item.icon}
@@ -88,16 +118,19 @@ function Sidebar() {
         ))}
       </nav>
 
-      {/* User Info */}
-      <div className="px-4 py-4 border-t border-slate-800">
+      {/* User Section */}
+      <div className="px-4 py-4 border-t border-slate-200 dark:border-slate-800">
         <div className="flex items-center gap-3 mb-4">
-          <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center font-bold">
+          <div className="h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center font-bold text-white">
             S
           </div>
 
           <div>
-            <p className="font-semibold">Shubham</p>
-            <p className="text-xs text-slate-400">
+            <p className="font-semibold text-slate-900 dark:text-white">
+              Shubham
+            </p>
+
+            <p className="text-xs text-slate-500 dark:text-slate-400">
               Security Analyst
             </p>
           </div>
@@ -105,13 +138,31 @@ function Sidebar() {
 
         <button
           onClick={handleLogout}
-          className="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl bg-red-500 hover:bg-red-600 transition-all duration-300"
+          className="
+            w-full
+            flex
+            items-center
+            justify-center
+            gap-2
+
+            px-4
+            py-3
+
+            rounded-xl
+
+            bg-red-500
+            hover:bg-red-600
+
+            text-white
+
+            transition-all
+            duration-300
+          "
         >
           <LogOut size={18} />
           Logout
         </button>
       </div>
-
     </aside>
   );
 }
