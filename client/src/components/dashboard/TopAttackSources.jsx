@@ -1,3 +1,7 @@
+import Card from "../ui/Card";
+import CardHeader from "../ui/CardHeader";
+import { Globe } from "lucide-react";
+
 const attackSources = [
   { country: "🇮🇳 India", attacks: 340 },
   { country: "🇺🇸 USA", attacks: 285 },
@@ -6,37 +10,58 @@ const attackSources = [
   { country: "🇩🇪 Germany", attacks: 92 },
 ];
 
-const maxAttacks = Math.max(...attackSources.map((item) => item.attacks));
+const maxAttacks = Math.max(
+  ...attackSources.map((item) => item.attacks)
+);
 
 function TopAttackSources() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h2 className="text-xl font-semibold mb-6">
-        🌍 Top Attack Sources
-      </h2>
+    <Card className="p-6">
+      <CardHeader
+        icon={<Globe size={22} />}
+        title="Top Attack Sources"
+        subtitle="Countries generating the most threats"
+      />
 
       <div className="space-y-5">
-        {attackSources.map((item) => (
-          <div key={item.country}>
-            <div className="flex justify-between mb-2">
-              <span className="font-medium">{item.country}</span>
-              <span className="text-slate-500">
-                {item.attacks} attacks
-              </span>
-            </div>
+        {attackSources.map((item) => {
+          const percentage = (item.attacks / maxAttacks) * 100;
 
-            <div className="w-full h-3 bg-slate-200 rounded-full">
-              <div
-                className="h-3 rounded-full bg-blue-600"
-                style={{
-                  width: `${(item.attacks / maxAttacks) * 100}%`,
-                }}
-              />
+          return (
+            <div key={item.country}>
+              <div className="mb-2 flex items-center justify-between">
+                <span className="font-medium text-slate-700 dark:text-slate-200">
+                  {item.country}
+                </span>
+
+                <span className="text-sm font-semibold text-slate-500 dark:text-slate-400">
+                  {item.attacks}
+                </span>
+              </div>
+
+              <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
+                <div
+                  className="
+                    h-full
+                    rounded-full
+
+                    bg-linear-to-r
+                    from-blue-500
+                    to-cyan-500
+
+                    transition-all
+                    duration-700
+                  "
+                  style={{
+                    width: `${percentage}%`,
+                  }}
+                />
+              </div>
             </div>
-          </div>
-        ))}
+          );
+        })}
       </div>
-    </div>
+    </Card>
   );
 }
 

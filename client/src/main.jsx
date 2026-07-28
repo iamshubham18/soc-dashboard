@@ -7,13 +7,16 @@ import App from "./App";
 
 import { AuthProvider } from "./context/AuthProvider";
 import { ThemeProvider } from "./context/ThemeProvider";
+import AlertProvider from "./context/AlertProvider";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
-          <App />
+          <AlertProvider>
+            <App />
+          </AlertProvider>
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

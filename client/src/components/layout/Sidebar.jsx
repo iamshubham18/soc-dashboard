@@ -48,28 +48,24 @@ function Sidebar() {
   };
 
   return (
-    <aside
-      className="
-        w-72
-        h-screen
-        flex
-        flex-col
+      <aside
+  className="
+    h-screen
+    w-72
+    bg-white
+    dark:bg-slate-950
 
-        bg-white
-        dark:bg-slate-950
+    border-r
+    border-slate-200
+    dark:border-slate-800
 
-        border-r
-        border-slate-200
-        dark:border-slate-800
+    text-slate-900
+    dark:text-white
 
-        text-slate-900
-        dark:text-white
-
-        shadow-xl
-        transition-colors
-        duration-300
-      "
-    >
+    flex
+    flex-col
+  "
+>
       {/* Logo */}
       <div className="px-6 py-5 border-b border-slate-200 dark:border-slate-800">
         <div className="flex items-center gap-3">

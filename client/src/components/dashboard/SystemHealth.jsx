@@ -1,16 +1,27 @@
+import Card from "../ui/Card";
+import CardHeader from "../ui/CardHeader";
+import { Activity } from "lucide-react";
+
 function HealthBar({ label, value, color }) {
   return (
     <div className="space-y-2">
-      <div className="flex justify-between text-sm">
-        <span className="font-medium">{label}</span>
-        <span>{value}%</span>
+      {/* Header */}
+      <div className="flex items-center justify-between">
+        <span className="font-medium text-slate-700 dark:text-slate-200">
+          {label}
+        </span>
+
+        <span className="font-semibold text-slate-500 dark:text-slate-400">
+          {value}%
+        </span>
       </div>
 
-      <div className="w-full h-3 bg-slate-200 rounded-full">
+      {/* Progress Track */}
+      <div className="h-3 w-full overflow-hidden rounded-full bg-slate-200 dark:bg-slate-700">
         <div
-          className={`${color} h-3 rounded-full transition-all duration-500`}
+          className={`h-full rounded-full transition-all duration-700 ${color}`}
           style={{ width: `${value}%` }}
-        ></div>
+        />
       </div>
     </div>
   );
@@ -18,10 +29,12 @@ function HealthBar({ label, value, color }) {
 
 function SystemHealth() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h2 className="text-xl font-semibold mb-6">
-        System Health
-      </h2>
+    <Card className="p-6">
+      <CardHeader
+        icon={<Activity size={22} />}
+        title="System Health"
+        subtitle="Real-time infrastructure monitoring"
+      />
 
       <div className="space-y-6">
         <HealthBar
@@ -48,7 +61,7 @@ function SystemHealth() {
           color="bg-red-500"
         />
       </div>
-    </div>
+    </Card>
   );
 }
 

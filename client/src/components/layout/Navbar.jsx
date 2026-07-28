@@ -17,12 +17,10 @@ function Navbar() {
     <header
       className="
         sticky top-0 z-20
-
         flex
         h-20
         items-center
         justify-between
-
         px-8
 
         border-b
@@ -39,7 +37,7 @@ function Navbar() {
       "
     >
       {/* Search */}
-      <div className="relative w-[420px]">
+      <div className="relative w-105">
         <Search
           size={18}
           className="
@@ -47,7 +45,6 @@ function Navbar() {
             left-4
             top-1/2
             -translate-y-1/2
-
             text-slate-400
           "
         />
@@ -91,14 +88,13 @@ function Navbar() {
       {/* Right Side */}
       <div className="flex items-center gap-3">
 
-        {/* Theme */}
+        {/* Theme Toggle */}
         <button
           onClick={toggleTheme}
           className="
+            flex
             h-11
             w-11
-
-            flex
             items-center
             justify-center
 
@@ -123,7 +119,7 @@ function Navbar() {
           ) : (
             <Moon
               size={20}
-              className="text-slate-700"
+              className="text-slate-700 dark:text-slate-300"
             />
           )}
         </button>
@@ -131,10 +127,9 @@ function Navbar() {
         {/* Settings */}
         <button
           className="
+            flex
             h-11
             w-11
-
-            flex
             items-center
             justify-center
 
@@ -162,10 +157,9 @@ function Navbar() {
           className="
             relative
 
+            flex
             h-11
             w-11
-
-            flex
             items-center
             justify-center
 
@@ -190,8 +184,8 @@ function Navbar() {
           <span
             className="
               absolute
-              top-2
               right-2
+              top-2
 
               h-2.5
               w-2.5
@@ -208,25 +202,24 @@ function Navbar() {
         </button>
 
         {/* Divider */}
-        <div className="h-10 w-px bg-slate-300 dark:bg-slate-700 mx-1"></div>
+        <div className="mx-1 h-10 w-px bg-slate-300 dark:bg-slate-700" />
 
         {/* User */}
         <div className="flex items-center gap-3">
 
           <div
             className="
+              flex
               h-11
               w-11
+              items-center
+              justify-center
 
               rounded-full
 
-              bg-gradient-to-r
+              bg-linear-to-r
               from-blue-600
               to-indigo-600
-
-              flex
-              items-center
-              justify-center
 
               text-white
               font-bold

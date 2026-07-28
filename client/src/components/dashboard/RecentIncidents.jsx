@@ -1,3 +1,7 @@
+import Card from "../ui/Card";
+import SectionHeader from "../ui/SectionHeader";
+import { ClipboardList } from "lucide-react";
+
 const incidents = [
   {
     id: 1,
@@ -19,34 +23,71 @@ const incidents = [
   },
 ];
 
+function getStatusColor(status) {
+  switch (status) {
+    case "Critical":
+      return "bg-red-100 text-red-700 dark:bg-red-500/20 dark:text-red-400";
+
+    case "In Progress":
+      return "bg-blue-100 text-blue-700 dark:bg-blue-500/20 dark:text-blue-400";
+
+    case "Resolved":
+      return "bg-green-100 text-green-700 dark:bg-green-500/20 dark:text-green-400";
+
+    default:
+      return "bg-slate-100 text-slate-700 dark:bg-slate-700 dark:text-slate-300";
+  }
+}
+
 function RecentIncidents() {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-slate-200 p-6">
-      <h2 className="text-xl font-semibold mb-5">
-        Recent Incidents
-      </h2>
+    <Card className="p-6">
+      <SectionHeader
+        title="Recent Incidents"
+        subtitle="Latest investigation cases"
+        action={<ClipboardList className="text-blue-500" size={22} />}
+      />
 
       <div className="space-y-4">
         {incidents.map((incident) => (
           <div
             key={incident.id}
-            className="flex justify-between items-center border-b pb-3 last:border-none"
+            className="
+              flex
+              items-center
+              justify-between
+              rounded-xl
+              border
+              border-slate-200
+              dark:border-slate-700
+              p-4
+              transition-all
+              duration-300
+              hover:border-blue-300
+              hover:shadow-md
+            "
           >
             <div>
-              <h3 className="font-medium">{incident.title}</h3>
+              <h3 className="font-semibold text-slate-900 dark:text-white">
+                {incident.title}
+              </h3>
 
-              <p className="text-sm text-slate-500">
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">
                 Analyst: {incident.analyst}
               </p>
             </div>
 
-            <span className="text-sm font-semibold text-blue-600">
+            <span
+              className={`rounded-full px-3 py-1 text-xs font-semibold ${getStatusColor(
+                incident.status
+              )}`}
+            >
               {incident.status}
             </span>
           </div>
         ))}
       </div>
-    </div>
+    </Card>
   );
 }
 

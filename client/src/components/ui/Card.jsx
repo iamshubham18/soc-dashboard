@@ -5,16 +5,16 @@ function Card({ children, className = "" }) {
     <div
       className={clsx(
         `
+        rounded-2xl
+        border
+        border-slate-200
+        dark:border-slate-800
+
         bg-white
         dark:bg-slate-800
 
-        border
-        border-slate-200
-        dark:border-slate-700
-
-        rounded-2xl
         shadow-sm
-        hover:shadow-xl
+        hover:shadow-lg
 
         transition-all
         duration-300
